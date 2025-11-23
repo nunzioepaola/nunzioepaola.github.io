@@ -385,18 +385,23 @@
     <script>
         // SMART MAPS OPENER
         function openSmartMap(locationQuery) {
-            // Check for mobile device (iOS or Android)
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
+            // Encode the query
             const encodedQuery = encodeURIComponent(locationQuery);
 
-            if (isMobile) {
-                // Use geo: protocol for mobile devices to let the OS choose the app
-                // On iOS this opens Apple Maps (default) or prompts if configured
-                // On Android this opens the default map app selector
+            // Detect iOS specific devices
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            // Detect Android
+            const isAndroid = /Android/.test(navigator.userAgent);
+
+            if (isIOS) {
+                // iOS: Use HTTPS link to force Google Maps (App if installed via Universal Links, or Browser)
+                // Avoids 'geo:' which forces Apple Maps on iOS
+                window.location.href = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+            } else if (isAndroid) {
+                // Android: Use 'geo:' for native intent (opens user's preferred map app)
                 window.location.href = `geo:0,0?q=${encodedQuery}`;
             } else {
-                // Desktop: Open Google Maps in new tab
+                // Desktop/Other: Open Google Maps in new tab
                 window.open(`https://www.google.com/maps/search/?api=1&query=${encodedQuery}`, '_blank');
             }
         }
