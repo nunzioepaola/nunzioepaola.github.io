@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nunzio & Paola | 17 Luglio 2026</title>
+    
+    <!-- Tailwind CSS per lo stile -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Simonetta per i testi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Simonetta:ital,wght@0,400;0,900;1,400;1,900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CARICAMENTO FONT PERSONALIZZATI */
+        @font-face {
+            font-family: 'Beautifully Delicious';
+            src: url('fonts/BeautifullyDelicious.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LeJour';
+            src: url('fonts/LeJour.otf') format('opentype'); 
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Assegnazione Font Personalizzati */
+        .font-script {
+            font-family: 'Beautifully Delicious', cursive;
+        }
+        
+        /* Nuovo font per i numeri nelle sezioni script */
+        .font-lejour {
+            font-family: 'LeJour', serif;
+        }
+
+        /* Forziamo il peso normale per Simonetta */
+        .font-serif {
+            font-family: 'Simonetta', serif;
+            font-weight: 400 !important;
+        }
+
+        /* Scorrimento fluido */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animazione dissolvenza */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cursore zoom per le immagini cliccabili */
+        .zoomable {
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .zoomable:hover {
+            transform: scale(1.02);
+        }
+
+        /* Lightbox Styles */
+        #lightbox-img {
+            transition: transform 0.1s ease-out;
+            transform-origin: center center;
+            max-height: 85vh;
+            max-width: 90vw;
+            object-fit: contain;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        #lightbox-img:active {
+            cursor: grabbing;
+        }
+
+        #zoom-slider-container {
+            backdrop-filter: blur(4px);
+        }
+        
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-[#FCFCFC] text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Navigazione Responsive -->
+    <nav class="fixed top-0 w-full bg-[#FCFCFC]/95 backdrop-blur-sm z-50 py-3 shadow-sm">
+        <div class="container mx-auto px-2">
+            <ul class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 md:gap-x-12 font-serif uppercase text-gray-600 text-[10px] md:text-lg tracking-widest text-center">
+                <!-- MODIFICATO: Link aggiornati con i nuovi nomi -->
+                <li><a href="#il-grande-giorno" class="hover:text-black transition duration-300">Il Grande Giorno</a></li>
+                <li><a href="#i-luoghi" class="hover:text-black transition duration-300">I Luoghi</a></li>
+                <li><a href="#i-nostri-ricordi" class="hover:text-black transition duration-300">I Nostri Ricordi</a></li>
+                <li><a href="#per-chi-lo-chiedeva" class="hover:text-black transition duration-300">Per chi lo chiedeva</a></li>
+                <li><a href="#rsvp" class="hover:text-black transition duration-300">RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero / Header Section -->
+    <!-- ID MODIFICATO: da benvenuti a il-grande-giorno -->
+    <header id="il-grande-giorno" class="h-auto flex flex-col justify-start items-center text-center px-2 pt-24 md:pt-32 pb-12">
+        <div class="fade-in w-full">
+            
+            <!-- Nomi -->
+            <div class="flex flex-row items-center justify-center gap-2 md:gap-12 mb-6 md:mb-10">
+                <h1 class="font-script text-6xl sm:text-7xl md:text-[10rem] lg:text-[16rem] text-gray-900 leading-none whitespace-nowrap">Nunzio</h1>
+                <span class="font-script text-4xl sm:text-5xl md:text-[6rem] lg:text-[10rem] text-gray-600 align-middle pb-2 md:pb-0">&</span>
+                <h1 class="font-script text-6xl sm:text-7xl md:text-[10rem] lg:text-[16rem] text-gray-900 leading-none whitespace-nowrap">Paola</h1>
+            </div>
+
+            <!-- Annunciano... -->
+            <p class="font-serif text-sm md:text-2xl tracking-widest text-gray-600 uppercase mb-6 md:mb-10 font-normal">
+                Annunciano il loro matrimonio
+            </p>
+
+            <!-- Data -->
+            <div class="font-script text-gray-700 flex flex-row flex-nowrap items-baseline justify-center gap-2 md:gap-10 leading-none mb-6 md:mb-10 w-full">
+                <span class="text-4xl sm:text-6xl md:text-[9rem]">Venerdì</span>
+                <span class="font-lejour text-3xl sm:text-4xl md:text-6xl ml-1">17</span>
+                <span class="text-4xl sm:text-6xl md:text-[9rem] ml-1">Luglio</span>
+                <span class="font-lejour text-3xl sm:text-4xl md:text-6xl ml-1">2026</span>
+            </div>
+            
+            <!-- Orario -->
+            <p class="font-serif font-normal text-sm md:text-2xl text-gray-600 tracking-widest uppercase">
+                ore 16:30
+            </p>
+            
+            <!-- Countdown Section -->
+            <div id="countdown" class="flex flex-wrap justify-center gap-6 md:gap-20 mt-12 md:mt-24 text-gray-800 font-serif">
+                
+                <!-- Giorni -->
+                <div class="flex flex-col items-center">
+                    <span id="days" class="font-lejour font-normal text-2xl md:text-7xl text-gray-700 mb-2">00</span>
+                    <span class="text-[8px] md:text-sm uppercase tracking-widest text-gray-500">Giorni</span>
+                </div>
+
+                <!-- Ore -->
+                <div class="flex flex-col items-center">
+                    <span id="hours" class="font-lejour font-normal text-2xl md:text-7xl text-gray-700 mb-2">00</span>
+                    <span class="text-[8px] md:text-sm uppercase tracking-widest text-gray-500">Ore</span>
+                </div>
+
+                <!-- Minuti -->
+                <div class="flex flex-col items-center">
+                    <span id="minutes" class="font-lejour font-normal text-2xl md:text-7xl text-gray-700 mb-2">00</span>
+                    <span class="text-[8px] md:text-sm uppercase tracking-widest text-gray-500">Minuti</span>
+                </div>
+
+                <!-- Secondi -->
+                <div class="flex flex-col items-center">
+                    <span id="seconds" class="font-lejour font-normal text-2xl md:text-7xl text-gray-700 mb-2">00</span>
+                    <span class="text-[8px] md:text-sm uppercase tracking-widest text-gray-500">Secondi</span>
+                </div>
+            </div>
+
+            <!-- Freccia -->
+            <div class="pt-12 md:pt-20 pb-8 animate-bounce">
+                <!-- Link aggiornato a #i-luoghi -->
+                <a href="#i-luoghi" class="text-gray-400 hover:text-gray-600 transition">
+                    <i class="fa-solid fa-chevron-down text-xl md:text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- La Cerimonia & Ricevimento -->
+    <!-- ID MODIFICATO: da il-grande-giorno a i-luoghi -->
+    <section id="i-luoghi" class="pt-0 pb-12 px-4">
+        <div class="container mx-auto max-w-5xl">
+            
+            <!-- Aggiunto Titolo Sezione in Corsivo all'inizio -->
+             <div class="text-center mb-12 fade-in">
+                <h2 class="font-script text-6xl md:text-8xl text-gray-800 mb-8 md:mb-12">I Luoghi</h2>
+            </div>
+
+            <!-- Church Section -->
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16 md:mb-24 fade-in">
+                <div class="w-full md:w-1/2 flex justify-center order-1 md:order-1">
+                    <img src="images/principali/CHIESA.png" 
+                         alt="Santuario di Santa Maria della Stella" 
+                         onclick="openLightbox(this.src)"
+                         class="zoomable max-h-72 md:max-h-96 w-auto object-contain hover:opacity-95 transition duration-300">
+                </div>
+                
+                <div class="w-full md:w-1/2 text-center md:text-left order-2 md:order-2 space-y-3 md:space-y-4">
+                    <h3 class="font-serif text-xl md:text-4xl text-gray-900 leading-snug uppercase tracking-wide font-normal">
+                        Santuario di Santa Maria della Stella
+                    </h3>
+                    <p class="font-serif text-sm md:text-lg text-gray-600 font-normal">Militello in Val di Catania</p>
+                    
+                    <div class="pt-2 md:pt-4">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Santuario+di+Santa+Maria+della+Stella+Militello" target="_blank" 
+                           class="inline-block border border-gray-400 px-4 py-2 md:px-6 font-serif uppercase tracking-widest text-[10px] md:text-sm hover:bg-gray-900 hover:text-white transition duration-300">
+                           Indicazioni <i class="fa-solid fa-church ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reception Section -->
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 fade-in">
+                 <div class="w-full md:w-1/2 text-center md:text-right order-2 md:order-1 space-y-3 md:space-y-4">
+                    <p class="font-serif text-sm md:text-lg text-gray-600 mb-1 md:mb-2 font-normal">
+                        dopo la cerimonia gli sposi<br>saranno lieti di accogliervi presso
+                    </p>
+                    <h3 class="font-serif text-xl md:text-4xl text-gray-900 leading-snug uppercase tracking-wide font-normal">
+                        Castello Xirumi Serravalle
+                    </h3>
+                    
+                    <div class="pt-2 md:pt-4">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Castello+Xirumi+Serravalle" target="_blank" 
+                           class="inline-block border border-gray-400 px-4 py-2 md:px-6 font-serif uppercase tracking-widest text-[10px] md:text-sm hover:bg-gray-900 hover:text-white transition duration-300">
+                           Indicazioni <i class="fa-solid fa-utensils ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+                    <img src="images/principali/CASTELLO.png" 
+                         alt="Castello Xirumi Serravalle" 
+                         onclick="openLightbox(this.src)"
+                         class="zoomable max-h-72 md:max-h-96 w-auto object-contain hover:opacity-95 transition duration-300">
+                </div>
+            </div>
+
+            <!-- Freccia -->
+            <div class="text-center pt-12 md:pt-16 pb-8 animate-bounce fade-in">
+                <a href="#i-nostri-ricordi" class="text-gray-400 hover:text-gray-600 transition">
+                    <i class="fa-solid fa-chevron-down text-xl md:text-2xl"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="i-nostri-ricordi" class="pt-0 pb-12 px-4">
+        <div class="container mx-auto max-w-4xl text-center fade-in">
+            <h2 class="font-script text-6xl md:text-8xl text-gray-800 mb-8 md:mb-12">I Nostri Ricordi</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-2 md:px-4">
+                <div class="aspect-[3/4] overflow-hidden rounded-sm shadow-sm hover:shadow-md transition duration-500">
+                    <img src="images/coppia/1.jpeg" onclick="openLightbox(this.src)" alt="Foto 1" class="zoomable w-full h-full object-cover">
+                </div>
+                <div class="aspect-[3/4] overflow-hidden rounded-sm shadow-sm hover:shadow-md transition duration-500">
+                    <img src="images/coppia/2.jpeg" onclick="openLightbox(this.src)" alt="Foto 2" class="zoomable w-full h-full object-cover">
+                </div>
+                <div class="aspect-[3/4] overflow-hidden rounded-sm shadow-sm hover:shadow-md transition duration-500">
+                    <img src="images/coppia/3.jpeg" onclick="openLightbox(this.src)" alt="Foto 3" class="zoomable w-full h-full object-cover">
+                </div>
+                <div class="aspect-[3/4] overflow-hidden rounded-sm shadow-sm hover:shadow-md transition duration-500">
+                    <img src="images/coppia/4.jpeg" onclick="openLightbox(this.src)" alt="Foto 4" class="zoomable w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="text-center pt-12 md:pt-16 animate-bounce">
+                <a href="#per-chi-lo-chiedeva" class="text-gray-400 hover:text-gray-600 transition">
+                    <i class="fa-solid fa-chevron-down text-xl md:text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section id="per-chi-lo-chiedeva" class="pt-0 pb-12 px-4">
+        <div class="container mx-auto max-w-2xl text-center fade-in">
+            <h2 class="font-script text-6xl md:text-8xl text-gray-800 mb-4">Per chi lo chiedeva</h2>
+            
+            <p class="font-serif text-base md:text-2xl text-gray-600 italic mb-6 md:mb-8 font-normal">Pi cu nni spiau… eccu ‘u rigalu modernu.</p>
+            
+            <div class="bg-white p-6 md:p-12 shadow-md rounded-sm border border-gray-100 mx-2 md:mx-4">
+                
+                <p class="font-serif text-base md:text-xl text-gray-600 italic mb-4 leading-relaxed font-normal">
+                    Nuddu obbligu: però, si vi scappa ‘u bonìficu di cori e di bona arrimuzza… l’IBAN è cca.
+                </p>
+                
+                <p class="font-serif text-xs md:text-base text-gray-500 italic mb-6 md:mb-8 leading-relaxed font-normal">
+                    (PS: Si, l’IBAN è di Paola… ca appena m’addumannai ‘picchì?’, mi rispunnìu: ‘Tu stai mutu!’)
+                </p>
+
+                <div class="space-y-2 font-serif text-gray-800">
+                    <p class="uppercase tracking-widest text-[10px] md:text-sm text-gray-500 font-normal">Intestato a</p>
+                    
+                    <div class="relative group cursor-pointer" onclick="copyText('name-text', 'name-msg')" title="Clicca per copiare">
+                        <p id="name-text" class="text-xs md:text-2xl font-mono bg-gray-50 py-3 px-2 rounded border border-gray-200 hover:border-gray-400 transition select-all break-all md:break-normal">
+                            Paola Monachella
+                        </p>
+                        <span id="name-msg" class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity pointer-events-none">Copiato!</span>
+                    </div>
+                    
+                    <div class="my-4 border-t border-gray-100 w-1/3 mx-auto"></div>
+                    
+                    <p class="uppercase tracking-widest text-[10px] md:text-sm text-gray-500 font-normal">IBAN</p>
+                    <div class="relative group cursor-pointer" onclick="copyText('iban-text', 'iban-msg')" title="Clicca per copiare">
+                        <p id="iban-text" class="text-xs md:text-2xl font-mono bg-gray-50 py-3 px-2 rounded border border-gray-200 hover:border-gray-400 transition select-all break-all md:break-normal">
+                            ITXX X 99999 99999 999999999999
+                        </p>
+                        <span id="iban-msg" class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity pointer-events-none">Copiato!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-12 md:pt-16 animate-bounce">
+                <a href="#rsvp" class="text-gray-400 hover:text-gray-600 transition">
+                    <i class="fa-solid fa-chevron-down text-xl md:text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final RSVP Note -->
+    <section id="rsvp" class="pt-0 pb-12 px-4">
+        <div class="container mx-auto max-w-4xl text-center fade-in space-y-6 md:space-y-8">
+            
+            <h2 class="font-script text-7xl md:text-9xl text-gray-800">RSVP</h2>
+            
+            <div class="space-y-4 md:space-y-6">
+                <p class="font-serif text-xl md:text-5xl text-gray-800 leading-tight font-normal">
+                    Prima ri l'11 Giugnu 2026 vulissimu sapiri cu veni e si aviti intulleranzi…
+                </p>
+                <p class="font-serif text-lg md:text-3xl text-gray-600 font-normal">
+                    Ca si vi prisentati muti e poi spuntati ca “chistu mi fa mali”, poi ni scusamu ma nun facemu magie!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 text-center border-t border-gray-100">
+        <div class="font-script text-5xl md:text-7xl text-gray-400">Nunzio <span class="font-script text-5xl md:text-7xl">&</span> Paola</div>
+        <div class="font-lejour text-sm md:text-xl text-gray-400 mt-4 tracking-widest uppercase">17.07.2026</div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300">
+        <div class="relative w-full h-full flex flex-col items-center justify-center p-4">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 z-50 p-2">&times;</button>
+            <div class="flex-grow flex items-center justify-center overflow-hidden w-full h-full relative" id="img-container">
+                <img id="lightbox-img" src="" class="rounded-sm shadow-2xl" draggable="false">
+            </div>
+            <div id="zoom-slider-container" class="absolute bottom-10 bg-black/40 px-6 py-3 rounded-full flex items-center gap-4 text-white z-50">
+                <i class="fa-solid fa-magnifying-glass-minus text-sm opacity-70"></i>
+                <input type="range" id="zoom-slider" min="1" max="4" step="0.1" value="1" class="w-48 md:w-64 cursor-pointer">
+                <i class="fa-solid fa-magnifying-glass-plus text-sm opacity-70"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(elementId, tooltipId) {
+            const textToCopy = document.getElementById(elementId).innerText.trim();
+            if (navigator.clipboard && window.isSecureContext) {
+                 navigator.clipboard.writeText(textToCopy).then(() => showTooltip(tooltipId));
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try { document.execCommand('copy'); showTooltip(tooltipId); } catch (err) { console.error('Unable to copy', err); }
+                document.body.removeChild(textArea);
+            }
+        }
+        function showTooltip(tooltipId) {
+            const msg = document.getElementById(tooltipId);
+            msg.classList.remove('opacity-0');
+            setTimeout(() => { msg.classList.add('opacity-0'); }, 2000);
+        }
+        const weddingDate = new Date("July 17, 2026 16:30:00").getTime();
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<div class='font-script text-4xl'>Oggi è il grande giorno!</div>";
+            }
+        }, 1000);
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => { observer.observe(el); });
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const zoomSlider = document.getElementById('zoom-slider');
+        const imgContainer = document.getElementById('img-container');
+        let isDragging = false, startX, startY, translateX = 0, translateY = 0, scale = 1;
+        function updateTransform() { lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`; }
+        function openLightbox(src) {
+            lightboxImg.src = src; scale = 1; translateX = 0; translateY = 0; zoomSlider.value = 1; updateTransform();
+            lightbox.classList.remove('hidden'); setTimeout(() => { lightbox.classList.remove('opacity-0'); }, 10); document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0'); setTimeout(() => { lightbox.classList.add('hidden'); lightboxImg.src = ''; }, 300); document.body.style.overflow = 'auto';
+        }
+        zoomSlider.addEventListener('input', function(e) { scale = parseFloat(e.target.value); if(scale === 1) { translateX = 0; translateY = 0; } updateTransform(); });
+        lightboxImg.addEventListener('mousedown', startDrag); window.addEventListener('mousemove', drag); window.addEventListener('mouseup', endDrag);
+        lightboxImg.addEventListener('touchstart', startDrag, {passive: false}); window.addEventListener('touchmove', drag, {passive: false}); window.addEventListener('touchend', endDrag);
+        function startDrag(e) { if (scale <= 1) return; isDragging = true; e.preventDefault(); const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY; startX = clientX - translateX; startY = clientY - translateY; lightboxImg.style.cursor = 'grabbing'; lightboxImg.style.transition = 'none'; }
+        function drag(e) { if (!isDragging) return; e.preventDefault(); const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX; const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY; translateX = clientX - startX; translateY = clientY - startY; updateTransform(); }
+        function endDrag() { if (!isDragging) return; isDragging = false; lightboxImg.style.cursor = 'grab'; lightboxImg.style.transition = 'transform 0.1s ease-out'; }
+        document.addEventListener('keydown', function(event) { if (event.key === "Escape") closeLightbox(); });
+        lightbox.addEventListener('click', function(e) { if (isDragging) return; if (e.target === lightbox || (e.target.closest('#img-container') && e.target !== lightboxImg) || (e.target === imgContainer)) closeLightbox(); });
+    </script>
+</body>
+</html>
