@@ -385,18 +385,15 @@
     <script>
         // SMART MAPS OPENER
         function openSmartMap(locationQuery) {
-            // Check for iOS (iPhone, iPad, iPod)
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            // Check for Android
-            const isAndroid = /Android/.test(navigator.userAgent);
+            // Check for mobile device (iOS or Android)
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             const encodedQuery = encodeURIComponent(locationQuery);
 
-            if (isIOS) {
-                // Force Apple Maps on iOS (Native App)
-                window.location.href = `http://maps.apple.com/?q=${encodedQuery}`;
-            } else if (isAndroid) {
-                // Force Native Geo Intent on Android (Opens default map app)
+            if (isMobile) {
+                // Use geo: protocol for mobile devices to let the OS choose the app
+                // On iOS this opens Apple Maps (default) or prompts if configured
+                // On Android this opens the default map app selector
                 window.location.href = `geo:0,0?q=${encodedQuery}`;
             } else {
                 // Desktop: Open Google Maps in new tab
