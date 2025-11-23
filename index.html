@@ -385,23 +385,42 @@
     <script>
         // SMART MAPS OPENER
         function openSmartMap(locationQuery) {
-            // Encode the query
             const encodedQuery = encodeURIComponent(locationQuery);
-
-            // Detect iOS specific devices
+            
+            // Detect Mobile
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            // Detect Android
             const isAndroid = /Android/.test(navigator.userAgent);
 
             if (isIOS) {
-                // iOS: Use HTTPS link to force Google Maps (App if installed via Universal Links, or Browser)
-                // Avoids 'geo:' which forces Apple Maps on iOS
-                window.location.href = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+                // iOS: Attempt to open Google Maps App, then Apple Maps, then Web
+                const gmapsApp = `comgooglemaps://?q=${encodedQuery}`;
+                const appleMaps = `maps://?q=${encodedQuery}`;
+                const gmapsWeb = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+
+                const start = Date.now();
+                
+                // 1. Try Google Maps App
+                window.location.href = gmapsApp;
+
+                // 2. If app didn't open (browser wasn't suspended), try Apple Maps
+                setTimeout(() => {
+                    if (Date.now() - start < 1500) {
+                        window.location.href = appleMaps;
+                        
+                        // 3. If that fails (unlikely on iOS), fallback to Web
+                        setTimeout(() => {
+                             if (Date.now() - start < 3000) {
+                                window.location.href = gmapsWeb; 
+                             }
+                        }, 800);
+                    }
+                }, 800);
+
             } else if (isAndroid) {
-                // Android: Use 'geo:' for native intent (opens user's preferred map app)
+                // Android: Use geo intent to let user pick their preferred app
                 window.location.href = `geo:0,0?q=${encodedQuery}`;
             } else {
-                // Desktop/Other: Open Google Maps in new tab
+                // Desktop: Standard web link
                 window.open(`https://www.google.com/maps/search/?api=1&query=${encodedQuery}`, '_blank');
             }
         }
